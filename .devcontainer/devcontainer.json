@@ -29,6 +29,7 @@
         "ms-vscode.vscode-typescript-next",
         "christian-kohler.npm-intellisense",
         "visualstudioexptteam.vscodeintellicode",
+				"esbenp.prettier-vscode",
 				"shd101wyy.markdown-preview-enhanced",
 				"pkief.material-icon-theme",
 				"zhuangtongfa.material-theme"
