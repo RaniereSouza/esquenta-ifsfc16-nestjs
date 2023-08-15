@@ -1,0 +1,46 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Esquenta Imersão Full Stack && Full Cycle #16 - Nest.js",
+	// "image": "mcr.microsoft.com/devcontainers/rust:bullseye",
+
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"dockerComposeFile": "docker-compose.yaml",
+  "service": "devcontainer",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"shutdownAction": "stopCompose",
+	
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {},
+		"ghcr.io/devcontainers/features/git:1": {}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	// "postCreateCommand": "make",
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+        "ms-vscode.vscode-typescript-next",
+        "christian-kohler.npm-intellisense",
+        "visualstudioexptteam.vscodeintellicode",
+				"shd101wyy.markdown-preview-enhanced",
+				"pkief.material-icon-theme",
+				"zhuangtongfa.material-theme"
+			]
+		}
+	},
+
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
+
+	// Using local directories as bound volumes
+	// "mounts": [
+	//   "source=${localWorkspaceFolder}/code,target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached"
+	// ]
+}
