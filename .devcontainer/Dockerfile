@@ -14,4 +14,4 @@ RUN dpkg -i /tmp/bat_0.12.1_amd64.deb
 RUN apt-get install silversearcher-ag
 
 # installing Nest.js globally
-RUN npm i -g @nestjs/cli
+RUN npm i -g @nestjs/cli@10
