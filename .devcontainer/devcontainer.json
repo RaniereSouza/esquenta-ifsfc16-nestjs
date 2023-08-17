@@ -21,7 +21,7 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cd code && npm ci",
+	"postCreateCommand": "cd code && npm ci && sudo systemctl enable docker.service && sudo systemctl enable containerd.service",
 
 	// Configure tool-specific properties.
 	"customizations": {
