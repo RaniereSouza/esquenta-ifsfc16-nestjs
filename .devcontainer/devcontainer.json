@@ -19,7 +19,9 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
-		3000 // Nest.js API
+		3000, // Nest.js API
+		3306, // MySQL
+		5555  // Prisma Studio
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
