@@ -1,19 +1,24 @@
+### Hello World
 GET http://localhost:3000
 
-###
 
+
+### Fetch all
 GET http://localhost:3000/categories
 
-###
 
+
+### Fetch one with ID
 GET http://localhost:3000/categories/1
 
-###
 
+
+### Fetch non-existent ID
 GET http://localhost:3000/categories/9999
 
-###
 
+
+### Normal creation
 POST http://localhost:3000/categories
 Content-Type: application/json
 
@@ -22,8 +27,17 @@ Content-Type: application/json
   "description": "Generic movie category"
 }
 
-###
 
+
+### Illegal creation
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{}
+
+
+
+### Partial update
 PATCH http://localhost:3000/categories/3
 Content-Type: application/json
 
@@ -31,6 +45,17 @@ Content-Type: application/json
   "description": "Movie category which is named \"Supertest\""
 }
 
-###
 
+
+### Illegal update
+PATCH http://localhost:3000/categories/3
+Content-Type: application/json
+
+{
+  "description": 53105
+}
+
+
+
+### Normal deletion
 DELETE http://localhost:3000/categories/3
