@@ -25,7 +25,7 @@
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cd code && npm ci && sudo systemctl enable docker.service && sudo systemctl enable containerd.service",
+	"postCreateCommand": "sudo systemctl enable docker.service && sudo systemctl enable containerd.service && cd code && npm ci",
 
 	// Configure tool-specific properties.
 	"customizations": {
