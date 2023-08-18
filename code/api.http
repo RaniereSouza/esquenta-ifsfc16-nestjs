@@ -18,16 +18,15 @@ POST http://localhost:3000/categories
 Content-Type: application/json
 
 {
-  "name": "Category Supertest",
-  "description": "Movie category which is named \"Supertest\""
+  "name": "Supertest",
+  "description": "Generic movie category"
 }
 
 ###
 
-PATCH http://localhost:3000/categories/1
+PATCH http://localhost:3000/categories/3
 Content-Type: application/json
 
 {
-  "name": "Category Supertest",
   "description": "Movie category which is named \"Supertest\""
 }
