@@ -30,3 +30,7 @@ Content-Type: application/json
 {
   "description": "Movie category which is named \"Supertest\""
 }
+
+###
+
+DELETE http://localhost:3000/categories/3
