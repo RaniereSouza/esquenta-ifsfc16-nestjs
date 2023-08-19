@@ -18,7 +18,7 @@ export class VideosService {
     }
   }
 
-  async create(createVideoDto: CreateVideoDto) {
+  async create(createVideoDto: CreateVideoDto, file: Express.Multer.File) {
     const categoryId = createVideoDto.category_id;
     await this.categoryExistsOrThrow(
       categoryId,
@@ -29,7 +29,7 @@ export class VideosService {
     return this.prismaService.video.create({
       data: {
         ...createVideoDto,
-        file_path: 'fake/video.mp4',
+        file_path: file.path,
       },
     });
   }

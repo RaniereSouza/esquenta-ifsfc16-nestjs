@@ -9,7 +9,10 @@ import {
   UploadedFile,
   ParseFilePipe,
   HttpStatus,
+  HttpCode,
+  UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { VideosService } from './videos.service';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoDto } from './dto/update-video.dto';
@@ -24,6 +27,7 @@ export class VideosController {
   constructor(private readonly videosService: VideosService) {}
 
   @Post()
+  @UseInterceptors(FileInterceptor('file'))
   create(
     @Body() createVideoDto: CreateVideoDto,
     @UploadedFile(
@@ -39,8 +43,8 @@ export class VideosController {
     )
     file: Express.Multer.File,
   ) {
-    console.log(file);
-    return this.videosService.create(createVideoDto);
+    console.log('file:', file);
+    return this.videosService.create(createVideoDto, file);
   }
 
   @Get()
@@ -63,6 +67,7 @@ export class VideosController {
     return this.videosService.update(+id, updateVideoDto);
   }
 
+  @HttpCode(HttpStatus.NO_CONTENT)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.videosService.remove(+id);

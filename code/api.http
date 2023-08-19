@@ -87,17 +87,7 @@ GET http://localhost:3000/videos/9999
 
 ### Normal creation
 POST http://localhost:3000/videos
-Content-Type: application/json
-
-{
-  "title": "Panic 6",
-  "description": "Jenna Ortega. It's all you need to know.",
-  "category_id": 2
-}
-
-### Normal creation
-POST http://localhost:3000/videos
-Content-Type: multipart/form-data boundary=------WebKitFormBoundary1234
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
 
 ------WebKitFormBoundary1234
 Content-Disposition: form-data; name="title"
@@ -116,7 +106,7 @@ Content-Disposition: form-data; name="file"; filename="test.mp4"
 Content-Type: video/mp4
 
 < ../test.mp4
-------WebKitFormBoundary1234
+------WebKitFormBoundary1234--
 
 
 ### Illegal creation

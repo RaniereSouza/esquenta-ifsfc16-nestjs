@@ -1,3 +1,4 @@
+import { Type } from 'class-transformer';
 import {
   IsInt,
   IsNotEmpty,
@@ -20,5 +21,6 @@ export class CreateVideoDto {
   @IsNotEmpty()
   @IsInt()
   @Min(1)
+  @Type(() => Number)
   category_id: number;
 }
