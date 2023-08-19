@@ -9,7 +9,7 @@ GET http://localhost:3000/categories
 
 
 ### Fetch one with ID
-GET http://localhost:3000/categories/1
+GET http://localhost:3000/categories/2
 
 
 
