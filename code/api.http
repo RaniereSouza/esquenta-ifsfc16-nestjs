@@ -95,6 +95,29 @@ Content-Type: application/json
   "category_id": 2
 }
 
+### Normal creation
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data boundary=------WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Behind the Curve
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Flat-earther bullshit: why?
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: video/mp4
+
+< ./test.mp4
+------WebKitFormBoundary1234
+
 
 ### Illegal creation
 POST http://localhost:3000/videos
