@@ -115,7 +115,7 @@ Content-Disposition: form-data; name="category_id"
 Content-Disposition: form-data; name="file"; filename="test.mp4"
 Content-Type: video/mp4
 
-< ./test.mp4
+< ../test.mp4
 ------WebKitFormBoundary1234
 
 
