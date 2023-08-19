@@ -1,21 +1,24 @@
+###### MAIN APP ######
+
 ### Hello World
 GET http://localhost:3000
 
+######################
 
+
+
+###### CATEGORIES ######
 
 ### Fetch all
 GET http://localhost:3000/categories
-
 
 
 ### Fetch one with ID
 GET http://localhost:3000/categories/2
 
 
-
 ### Fetch non-existent ID
 GET http://localhost:3000/categories/9999
-
 
 
 ### Normal creation
@@ -28,13 +31,11 @@ Content-Type: application/json
 }
 
 
-
 ### Illegal creation
 POST http://localhost:3000/categories
 Content-Type: application/json
 
 {}
-
 
 
 ### Partial update
@@ -46,16 +47,70 @@ Content-Type: application/json
 }
 
 
-
 ### Illegal update
 PATCH http://localhost:3000/categories/3
 Content-Type: application/json
 
 {
-  "description": 53105
+  "description": 80085
 }
-
 
 
 ### Normal deletion
 DELETE http://localhost:3000/categories/3
+
+########################
+
+
+
+###### VIDEOS ######
+
+### Fetch all
+GET http://localhost:3000/videos
+
+
+### Fetch by Category ID
+GET http://localhost:3000/videos/category/2
+
+
+### Fetch with non-existent Category ID
+GET http://localhost:3000/videos/category/9999
+
+
+### Fetch one with ID
+GET http://localhost:3000/videos/1
+
+
+### Fetch non-existent ID
+GET http://localhost:3000/videos/9999
+
+
+### Normal creation
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{
+  "title": "Panic 6",
+  "description": "Jenna Ortega. It's all you need to know.",
+  "category_id": 2
+}
+
+
+### Illegal creation
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{}
+
+
+### Creation with non-existent Category ID
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{
+  "title": "Panic 5",
+  "description": "Jenna Ortega. It's all you need to know.",
+  "category_id": 3
+}
+
+####################
