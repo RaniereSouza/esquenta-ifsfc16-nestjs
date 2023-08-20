@@ -1,1 +1,166 @@
+###### MAIN APP ######
+
+### Hello World
 GET http://localhost:3000
+
+######################
+
+
+
+###### CATEGORIES ######
+
+### Fetch all
+GET http://localhost:3000/categories
+
+
+### Fetch one with ID
+GET http://localhost:3000/categories/2
+
+
+### Fetch non-existent ID
+GET http://localhost:3000/categories/9999
+
+
+### Normal creation
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+  "name": "Supertest",
+  "description": "Generic movie category"
+}
+
+
+### Illegal creation
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{}
+
+
+### Partial update
+PATCH http://localhost:3000/categories/3
+Content-Type: application/json
+
+{
+  "description": "Movie category which is named \"Supertest\""
+}
+
+
+### Illegal update
+PATCH http://localhost:3000/categories/3
+Content-Type: application/json
+
+{
+  "description": 80085
+}
+
+
+### Normal deletion
+DELETE http://localhost:3000/categories/3
+
+########################
+
+
+
+###### VIDEOS ######
+
+### Fetch all
+GET http://localhost:3000/videos
+
+
+### Fetch by Category ID
+GET http://localhost:3000/videos/category/2
+
+
+### Fetch with non-existent Category ID
+GET http://localhost:3000/videos/category/9999
+
+
+### Fetch one with ID
+GET http://localhost:3000/videos/1
+
+
+### Fetch non-existent ID
+GET http://localhost:3000/videos/9999
+
+
+### Normal creation
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Behind the Curve
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Flat-earther bullshit: why?
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: video/mp4
+
+< ../test.mp4
+------WebKitFormBoundary1234--
+
+
+### Illegal creation
+POST http://localhost:3000/videos
+Content-Type: application/json
+
+{}
+
+
+### Creation with illegal Mime-Type
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Behind the Curve 2
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Flat-earthers strike again
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: text/markdown; charset=UTF-8
+
+< ./README.md
+------WebKitFormBoundary1234--
+
+
+### Creation with non-existent Category ID
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Panic 5
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Jenna Ortega. It's all you need to know.
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+9999
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: video/mp4
+
+< ../test2.mp4
+------WebKitFormBoundary1234--
+
+####################

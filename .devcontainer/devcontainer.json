@@ -19,11 +19,13 @@
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
-		3000 // Nest.js API
+		3000, // Nest.js API
+		3306, // MySQL
+		5555  // Prisma Studio
 	],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "cd code && npm ci && sudo systemctl enable docker.service && sudo systemctl enable containerd.service",
+	"postCreateCommand": "cd code && npm ci",
 
 	// Configure tool-specific properties.
 	"customizations": {
@@ -34,6 +36,7 @@
         "visualstudioexptteam.vscodeintellicode",
 				"esbenp.prettier-vscode",
 				"humao.rest-client",
+				"prisma.prisma",
 				"shd101wyy.markdown-preview-enhanced",
 				"pkief.material-icon-theme",
 				"zhuangtongfa.material-theme"
