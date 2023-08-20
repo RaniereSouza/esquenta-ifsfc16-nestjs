@@ -1,3 +1,6 @@
+import { createReadStream } from 'fs';
+import path from 'path';
+import { Response } from 'express';
 import {
   Controller,
   Get,
@@ -11,12 +14,14 @@ import {
   HttpStatus,
   HttpCode,
   UseInterceptors,
+  Res,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { VideosService } from './videos.service';
 import { CreateVideoDto } from './dto/create-video.dto';
 import { UpdateVideoDto } from './dto/update-video.dto';
 import { VideoFileValidator } from './video-file-validator';
+import { VideoSerializer } from './video-serializer';
 
 const KB = 1024;
 const MB = KB * 1024;
@@ -48,18 +53,21 @@ export class VideosController {
   }
 
   @Get()
-  findAll() {
-    return this.videosService.findAll();
+  async findAll() {
+    const videos = await this.videosService.findAll();
+    return videos.map((video) => new VideoSerializer(video));
   }
 
   @Get('category/:category_id')
-  findByCategory(@Param('category_id') categoryId: string) {
-    return this.videosService.findByCategory(+categoryId);
+  async findByCategory(@Param('category_id') categoryId: string) {
+    const videos = await this.videosService.findByCategory(+categoryId);
+    return videos.map((video) => new VideoSerializer(video));
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.videosService.findOne(+id);
+  async findOne(@Param('id') id: string) {
+    const video = await this.videosService.findOne(+id);
+    return new VideoSerializer(video);
   }
 
   @Patch(':id')
@@ -71,5 +79,13 @@ export class VideosController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.videosService.remove(+id);
+  }
+
+  @Get('file/:file_name')
+  file(@Param('file_name') filename: string, @Res() response: Response) {
+    const fileStream = createReadStream(
+      path.join(process.cwd(), 'upload', filename),
+    );
+    return fileStream.pipe(response);
   }
 }

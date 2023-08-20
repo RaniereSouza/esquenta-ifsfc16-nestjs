@@ -116,14 +116,51 @@ Content-Type: application/json
 {}
 
 
+### Creation with illegal Mime-Type
+POST http://localhost:3000/videos
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
+
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Behind the Curve 2
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Flat-earthers strike again
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+1
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: text/markdown; charset=UTF-8
+
+< ./README.md
+------WebKitFormBoundary1234--
+
+
 ### Creation with non-existent Category ID
 POST http://localhost:3000/videos
-Content-Type: application/json
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary1234
 
-{
-  "title": "Panic 5",
-  "description": "Jenna Ortega. It's all you need to know.",
-  "category_id": 3
-}
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="title"
+
+Panic 5
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="description"
+
+Jenna Ortega. It's all you need to know.
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="category_id"
+
+9999
+------WebKitFormBoundary1234
+Content-Disposition: form-data; name="file"; filename="test.mp4"
+Content-Type: video/mp4
+
+< ../test2.mp4
+------WebKitFormBoundary1234--
 
 ####################

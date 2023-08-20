@@ -35,18 +35,22 @@ export class VideosService {
   }
 
   findAll() {
-    return this.prismaService.video.findMany();
+    return this.prismaService.video.findMany({ include: { category: true } });
   }
 
   async findByCategory(categoryId: number) {
     await this.categoryExistsOrThrow(categoryId);
     return this.prismaService.video.findMany({
       where: { category_id: categoryId },
+      include: { category: true },
     });
   }
 
   findOne(id: number) {
-    return this.prismaService.video.findUniqueOrThrow({ where: { id } });
+    return this.prismaService.video.findUniqueOrThrow({
+      where: { id },
+      include: { category: true },
+    });
   }
 
   update(id: number, updateVideoDto: UpdateVideoDto) {
