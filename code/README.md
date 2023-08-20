@@ -1,5 +1,5 @@
 [[Esquenta #02][Live #01]](https://www.youtube.com/watch?v=74Rks96yaAY) Imersão Full Stack && Full Cycle #16:
-================================================
+=============================================================================================================
 ## *Aplicação REST para gestão de Vídeos e Categorias, construída com Nest.js 10, MySQL, Prisma ORM e documentada com Swagger.*
 
 ---
